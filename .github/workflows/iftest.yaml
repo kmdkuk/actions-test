@@ -21,8 +21,10 @@ jobs:
   upgrade:
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref != 'refs/heads/stage' || github.ref != 'refs/head/release' || !startsWith(github.ref, 'refs/head/op-stage') || !startsWith(github.ref, 'refs/head/op-release')
+    if: github.ref != 'refs/heads/stage' || github.ref != 'refs/head/release' || !startsWith(github.head_ref, 'op-stage') || !startsWith(github.head_ref, 'refs/head/op-release')
     steps:
       - uses: actions/checkout@v3
-      - run: echo "upgrade"
+      - run: echo "${{ github.ref }}"
+      - run: echo "${{ github.head_ref }}"
+      - run: echo "${GITHUB_REF#refs/heads/}"
 
