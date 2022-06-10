@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     # stage/releaseへマージされたとき、stage/releaseへのPR(op-stage-*/op-release-*)の時skip
-    if: github.ref != 'refs/heads/stage' || github.ref != 'refs/head/release' || !startsWith(github.head_ref, 'op-stage') || !startsWith(github.head_ref, 'refs/head/op-release')
+    if: github.ref != 'refs/heads/stage' && github.ref != 'refs/head/release' && !startsWith(github.head_ref, 'op-stage') && !startsWith(github.head_ref, 'refs/head/op-release')
     steps:
       - uses: actions/checkout@v3
       - run: |
