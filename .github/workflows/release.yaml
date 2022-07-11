@@ -18,4 +18,6 @@ jobs:
           gh release create ${TAG_NAME} \
             --title "Release ${TAG_NAME}" \
             --notes "See [CHANGELOG.md](./CHANGELOG.md) for details." \
+            --notes "add notes" \
+            --generate-notes \
             hoge.txt README.md
