@@ -15,4 +15,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG_NAME=${GITHUB_REF##*/}
-          gh release create ${TAG_NAME} hoge.txt README.md
+          gh release create ${TAG_NAME} \
+            --title "Release ${TAG_NAME}" \
+            --notes "See [CHANGELOG.md](./CHANGELOG.md) for details." \
+            hoge.txt README.md
